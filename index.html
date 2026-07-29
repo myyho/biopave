@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioPave - Gạch Lát Sinh Thái Thấm Nước</title>
+<!-- Tailwind CSS & Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#9ed1bd",
+                        "tertiary-container": "#434542",
+                        "primary-fixed": "#baeed9",
+                        "surface-bright": "#fcf9f8",
+                        "on-surface": "#1c1b1b",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-container": "#765f3d",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#584324",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#8abda9",
+                        "secondary-container": "#fbdbb0",
+                        "secondary-fixed-dim": "#e1c299",
+                        "inverse-surface": "#313030",
+                        "surface-container-low": "#f6f3f2",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-fixed-dim": "#c6c7c2",
+                        "surface-container": "#f0edec",
+                        "secondary": "#725a39",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#454744",
+                        "on-primary-fixed-variant": "#1d4f40",
+                        "on-tertiary-container": "#b2b2ae",
+                        "on-primary-fixed": "#002117",
+                        "tertiary": "#2d2f2c",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-fixed": "#281801",
+                        "surface-dim": "#dcd9d9",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#feddb3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#1a1c19",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#404945",
+                        "tertiary-fixed": "#e3e3de",
+                        "inverse-primary": "#9ed1bd",
+                        "outline-variant": "#c0c9c3",
+                        "surface-container-high": "#ebe7e7",
+                        "outline": "#707974",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#376757",
+                        "on-background": "#1c1b1b",
+                        "primary-container": "#1b4d3e",
+                        "background": "#fcf9f8",
+                        "primary": "#003629"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "section-py": "120px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-xl-mobile": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "headline-xl": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    },
+                    "boxShadow": {
+                        "soft": "0 4px 20px rgba(27, 77, 62, 0.08)",
+                        "canvas": "0 8px 30px rgba(27, 77, 62, 0.12)"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F5F0; /* Level 1 Base */
+            color: #1c1b1b;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #003629 0%, #1b4d3e 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1b4d3e 0%, #376757 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(27, 77, 62, 0.2);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(114, 90, 57, 0.2);
+        }
+        .table-row-hover:hover {
+            background-color: rgba(186, 238, 217, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim" href="#">BioPave</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors hover:bg-primary-container/10 dark:hover:bg-primary-container/20 rounded-lg px-3 py-2 transition-all" href="#solutions">Giải pháp</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors hover:bg-primary-container/10 dark:hover:bg-primary-container/20 rounded-lg px-3 py-2 transition-all" href="#technology">Công nghệ</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors hover:bg-primary-container/10 dark:hover:bg-primary-container/20 rounded-lg px-3 py-2 transition-all" href="#business">Kinh doanh</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors hover:bg-primary-container/10 dark:hover:bg-primary-container/20 rounded-lg px-3 py-2 transition-all" href="#roadmap">Lộ trình</a>
+</div>
+<button class="hidden md:inline-flex btn-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full">Liên hệ ngay</button>
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</nav>
+<main>
+<!-- 1. Hero Section -->
+<section class="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover object-center" data-alt="Macro photography of permeable bio-paving stones in an urban park setting. The ground is made of textured, sustainable concrete mixed with recycled materials, allowing water to drain. Small patches of green moss and grass grow between the joints. The background shows a modern, bright, out-of-focus city street với pedestrians, bathed in soft, natural daylight. The aesthetic is ecological modernism, emphasizing a clean, green, and breathable urban environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgTQrTSyvW0gHF_6dpgd3SChwLfdgPr5389u0M6IgO60YynAaTyOMbhuDJeYaHYR3-_Kkb-wbtoA5DK93HFyS24x-fK7SYmcjgwdhU4TKehwNT-PWIAe3_Jo-s0gb8wWDZYjYe1VsL-8U9C9NfxZXmd1hnfKwg4p245bPI-5x8-tMeXHeYLuxUAoqKsj7maUrzMKEKjzbapCMPKY6BTwKO8GiBXfGVmDGkI7yw94F3kO_MTcK0bi2ExQ"/>
+<div class="absolute inset-0 bg-surface/70 backdrop-blur-sm"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center mt-12 md:mt-24">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-container/10 text-primary-container font-label-md text-label-md mb-8 border border-primary-container/20">
+<span class="material-symbols-outlined text-sm">eco</span>
+                    Giải Pháp Đột Phá Cho Đô Thị Xanh
+                </div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary max-w-4xl mx-auto mb-6 leading-tight">
+                    BioPave - Gạch Lát Sinh Thái Thấm Nước
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    Tận dụng phế thải vỏ hải sản và tro xỉ nhằm giảm ngập cục bộ, bảo vệ môi trường thông qua công nghệ hệ lỗ rỗng liên thông và phản ứng Pozzolanic.
+                </p>
+<a class="inline-flex items-center justify-center btn-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-full min-w-[200px]" href="#solutions">
+                    Khám phá ngay
+                    <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</a>
+</div>
+</section><section class="py-20 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Video Giới thiệu &amp; Mô phỏng 3D</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mx-auto mb-12">
+      Khám phá cơ chế cấu trúc lỗ rỗng liên kết, phản ứng Pozzolanic và vòng tuần hoàn biến rác thải thành vật liệu xanh thông qua mô phỏng 3D trực quan
+    </p>
+<div class="relative aspect-video w-full max-w-4xl mx-auto bg-surface-container-highest rounded-3xl overflow-hidden shadow-lg group cursor-pointer">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center text-on-primary shadow-xl transition-transform duration-300 group-hover:scale-110">
+<span class="material-symbols-outlined text-4xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</div>
+</div>
+</section>
+<!-- 3. Problem & Solution Section -->
+<section class="py-section-py bg-background relative z-20" id="solutions">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="aspect-square rounded-3xl overflow-hidden glass-card p-4 relative z-10 shadow-soft">
+<img class="w-full h-full object-cover rounded-2xl" data-alt="A split-screen style conceptual illustration or 3D render. One side shows traditional grey concrete paving causing a puddle of water during rain. The other side shows BioPave permeable paving with water filtering straight through the surface into the ground below. The overall tone is modern, clean, highlighting the contrast between conventional urban flooding and sustainable drainage solutions in a bright, ecological architectural style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE34mSHB9lTpn4-s45jR-gMNNf5TN7Tm7Wjr5rEn-wo1IDcToRmnp3ZL9DTbyzAGfli8LPV9YY-ZnNx5qucBdvG0K-6NBN9dek0uohp42Wnldj91eQlJ04M-uKVOsnPiZ2AEAy440QJfYFLzdF5qbv_Nz3SNUW3TwW7esgeUpct_eVboxcJziLPQ26Ve94ufO-CKVPu0bltfpOF26JldA5vdEWBwgXXNZCTdxWShLi4CZLF84-n3ZGxA"/>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-8 -right-8 w-64 h-64 bg-primary-fixed rounded-full blur-3xl opacity-50 z-0"></div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Thách Thức Đô Thị &amp; Giải Pháp Tuần Hoàn</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
+                            Quá trình "bê tông hóa" làm mất bề mặt thấm tự nhiên gây ngập lụt nghiêm trọng, cùng với đó là gánh nặng rác thải vỏ hải sản (ngành chế biến thủy sản) và tro xỉ (nhà máy nhiệt điện).
+                        </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8">
+                            BioPave ứng dụng công nghệ cấp phối vật liệu kết hợp giữa vỏ hải sản và tro xỉ nhằm hình thành <strong>hệ lỗ rỗng liên thông</strong> và <strong>phản ứng Pozzolanic</strong> giúp tăng khả năng thấm nước nhưng vẫn đảm bảo độ bền cơ học.
+                        </p>
+<div class="bg-primary-container/5 border-l-4 border-primary p-6 rounded-r-xl">
+<h4 class="font-headline-md text-lg text-primary mb-2">Nỗi đau cốt lõi được giải quyết:</h4>
+<ul class="space-y-3 font-body-md text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">flood</span>
+<span>Giảm ngập lụt cục bộ do bề mặt bê tông hóa.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">payments</span>
+<span>Giải quyết rào cản tài chính của gạch thấm nước nhập khẩu đắt đỏ.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">recycling</span>
+<span>Xử lý phế thải công nghiệp, nông nghiệp có giá trị thấp.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Comparison Table Section -->
+<section class="py-section-py bg-surface-container-low" id="comparison">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Lợi Thế Cạnh Tranh</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">So sánh BioPave với các vật liệu lát nền truyền thống trên thị trường.</p>
+</div>
+<div class="overflow-x-auto rounded-2xl border border-outline-variant/30 shadow-sm bg-surface">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary-container/10 border-b border-outline-variant/30">
+<th class="font-label-md text-label-md text-primary p-6 w-1/4">Tiêu chí đánh giá</th>
+<th class="font-label-md text-label-md text-primary p-6 w-1/3 bg-primary/5">Gạch sinh thái BioPave</th>
+<th class="font-label-md text-label-md text-on-surface p-6 w-1/3">Gạch Terrazzo/ Block truyền thống</th>
+<th class="font-label-md text-label-md text-primary p-6 text-center">Lợi thế</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface-variant">
+<tr class="border-b border-outline-variant/20 table-row-hover transition-colors">
+<td class="p-6 font-semibold text-on-surface">Khả năng thấm nước</td>
+<td class="p-6 bg-primary/5">Mục tiêu thiết kế đạt tốc độ thấm nước 2–12 mm/s; giảm đọng nước bề mặt.</td>
+<td class="p-6">Thấm rất chậm hoặc không thấm, bề mặt đặc, chắc khiến nước tràn trên mặt, dễ gây đọng vũng.</td>
+<td class="p-6 text-center"><span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">Vượt trội</span></td>
+</tr>
+<tr class="border-b border-outline-variant/20 table-row-hover transition-colors">
+<td class="p-6 font-semibold text-on-surface">Giá thành</td>
+<td class="p-6 bg-primary/5">Hướng đến mức giá cạnh tranh nhờ thay thế một phần nguyên liệu tự nhiên bằng vật liệu tái chế.</td>
+<td class="p-6">Mức giá phổ thông, nhưng chịu áp lực tăng giá do cạn kiệt tài nguyên đá, cát tự nhiên.</td>
+<td class="p-6 text-center"><span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-xs font-semibold">Cạnh tranh</span></td>
+</tr>
+<tr class="border-b border-outline-variant/20 table-row-hover transition-colors">
+<td class="p-6 font-semibold text-on-surface">Khả năng giảm nhiệt</td>
+<td class="p-6 bg-primary/5">Cấu trúc rỗng có tiềm năng hỗ trợ giảm nhiệt độ bề mặt.</td>
+<td class="p-6">Hấp thụ bức xạ và giữ nhiệt rất lâu, tạo ra "hiệu ứng đảo nhiệt đô thị".</td>
+<td class="p-6 text-center"><span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">Vượt trội</span></td>
+</tr>
+<tr class="table-row-hover transition-colors">
+<td class="p-6 font-semibold text-on-surface">Nguồn gốc vật liệu</td>
+<td class="p-6 bg-primary/5">Thay thế cốt liệu tự nhiên bằng vỏ hải sản và tro xỉ, giảm tiêu thụ tài nguyên và phát thải CO2.</td>
+<td class="p-6">Khai thác tài nguyên tự nhiên (đá dăm, cát) và sử dụng hoàn toàn xi măng phát thải CO2 cao.</td>
+<td class="p-6 text-center"><span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">Vượt trội</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Technology / Production Process Section -->
+<section class="py-section-py bg-background" id="technology">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Công Nghệ Cốt Lõi &amp; Quy Trình</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mx-auto">
+                        Tận dụng phản ứng Pozzolanic và hệ lỗ rỗng liên thông để tạo ra sản phẩm vừa bền vững vừa có khả năng thấm hút vượt trội.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+<!-- Connecting Line -->
+<div class="hidden md:block absolute top-1/2 left-10 right-10 h-1 bg-primary-fixed/50 -translate-y-1/2 z-0"></div>
+<!-- Step 1 -->
+<div class="bg-surface relative z-10 p-6 rounded-2xl border-2 border-primary-fixed/50 text-center shadow-sm flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 text-2xl font-bold shadow-md">1</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-2">Thu gom</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Thu gom vỏ hải sản và tro xỉ từ các nhà máy tại ĐBSCL.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface relative z-10 p-6 rounded-2xl border-2 border-primary-fixed/50 text-center shadow-sm flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 text-2xl font-bold shadow-md">2</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-2">Xử lý</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Làm sạch, loại muối, sấy khô và nghiền vỏ hải sản theo kích thước.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface relative z-10 p-6 rounded-2xl border-2 border-primary-fixed text-center shadow-md transform md:-translate-y-4 flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 text-2xl font-bold shadow-lg ring-4 ring-primary/20">3</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-2">Cấp phối</h4>
+<p class="font-body-md text-sm text-on-surface-variant font-semibold">Tạo hệ lỗ rỗng &amp; Phản ứng Pozzolanic giữa tro xỉ, xi măng và nước.</p>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface relative z-10 p-6 rounded-2xl border-2 border-primary-fixed/50 text-center shadow-sm flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 text-2xl font-bold shadow-md">4</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-2">Ép khuôn</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Định hình gạch sinh thái bằng công nghệ máy ép rung.</p>
+</div>
+<!-- Step 5 -->
+<div class="bg-surface relative z-10 p-6 rounded-2xl border-2 border-primary-fixed/50 text-center shadow-sm flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 text-2xl font-bold shadow-md">5</div>
+<h4 class="font-headline-md text-[18px] text-primary mb-2">Dưỡng hộ</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Đóng gói, lưu kho và kiểm định chất lượng trước khi xuất xưởng.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Market Analysis Section -->
+<section class="py-section-py bg-surface-container" id="target-market">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Thị trường tiềm năng &amp; Cung Cầu</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mx-auto">
+                        Nhu cầu vật liệu xanh đang tăng mạnh do quá trình đô thị hóa và xu hướng phát triển bền vững, trong khi nguồn cung vật liệu tái chế, giá cả hợp lý vẫn còn hạn chế.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface p-8 rounded-2xl border-2 border-primary-fixed shadow-sm">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">account_balance</span>
+</div>
+<h3 class="font-headline-md text-[22px] font-semibold text-primary mb-3">B2G - Cơ quan nhà nước</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Các Ban Quản lý dự án, Sở Xây dựng, Sở GTVT tại khu vực ĐBSCL có nhu cầu cấp bách triển khai các giải pháp giảm ngập đô thị và phát triển hạ tầng xanh, đáp ứng tiêu chuẩn bền vững quốc gia.
+                        </p>
+</div>
+<div class="bg-surface p-8 rounded-2xl border-2 border-primary-container shadow-md relative transform -translate-y-2">
+<div class="absolute -top-4 right-4 bg-primary text-on-primary text-xs font-bold px-3 py-1 rounded-full">Khách hàng trọng tâm</div>
+<div class="w-16 h-16 bg-primary text-on-primary rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">domain</span>
+</div>
+<h3 class="font-headline-md text-[22px] font-semibold text-primary mb-3">B2B - Chủ đầu tư &amp; Nhà thầu</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Dự án xây dựng xanh, khu công nghiệp, khu du lịch sinh thái cần vật liệu thấm nước. Nhóm này có nhu cầu lớn, khả năng triển khai nhanh và rất cần giải pháp tối ưu chi phí logistics.
+                        </p>
+</div>
+<div class="bg-surface p-8 rounded-2xl border-2 border-primary-fixed shadow-sm">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">storefront</span>
+</div>
+<h3 class="font-headline-md text-[22px] font-semibold text-primary mb-3">B2C - Hộ gia đình &amp; Dịch vụ</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Hộ dân tại khu vực thường xuyên ngập úng, triều cường, quán cà phê sân vườn có nhu cầu cải tạo bề mặt khô ráo, chống trơn trượt với chi phí phải chăng hơn hàng nhập khẩu.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Business Model Canvas Section -->
+<section class="py-section-py bg-background" id="business">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Mô Hình Kinh Doanh Canvas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Chiến lược phát triển toàn diện của BioPave.</p>
+</div>
+<div class="bg-surface p-6 md:p-10 rounded-3xl shadow-canvas border border-outline-variant/30 overflow-x-auto">
+<div class="min-w-[1000px] grid grid-cols-10 gap-4">
+<!-- Đối tác chính -->
+<div class="col-span-2 bg-surface-container-low p-5 rounded-xl border border-outline-variant/20">
+<h4 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">handshake</span>
+                                Đối tác chính
+                            </h4>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-2 list-disc pl-4">
+<li>Nhà máy chế biến thủy sản, đơn vị cung cấp tro xỉ.</li>
+<li>Đơn vị kiểm định.</li>
+<li>Nhà thầu xây dựng.</li>
+<li>Đại lý vật liệu, logistics.</li>
+<li>Trường đại học và chuyên gia vật liệu.</li>
+</ul>
+</div>
+<!-- Hoạt động & Nguồn lực -->
+<div class="col-span-2 flex flex-col gap-4">
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/20 flex-1">
+<h4 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">engineering</span>
+                                    Hoạt động chính
+                                </h4>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-2 list-disc pl-4">
+<li>Thu gom, xử lý nguyên liệu.</li>
+<li>Nghiên cứu, phát triển &amp; sản xuất.</li>
+<li>Kiểm định chất lượng.</li>
+<li>Marketing, bán hàng, mô hình điểm.</li>
+</ul>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/20 flex-1">
+<h4 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+                                    Nguồn lực chính
+                                </h4>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-2 list-disc pl-4">
+<li>Nguồn nguyên liệu tái chế dồi dào.</li>
+<li>Công thức phối trộn &amp; quy trình sx.</li>
+<li>Hệ thống máy móc.</li>
+<li>Đội ngũ R&amp;D và kỹ thuật.</li>
+</ul>
+</div>
+</div>
+<!-- Giải pháp giá trị -->
+<div class="col-span-2 bg-primary/10 p-5 rounded-xl border-2 border-primary/20">
+<h4 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2 justify-center text-center">
+<span class="material-symbols-outlined text-xl">diamond</span>
+                                Giải pháp giá trị
+                            </h4>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-3 list-disc pl-4">
+<li><strong>Gạch sinh thái:</strong> thấm nước nhanh, giảm đọng nước, ngập úng.</li>
+<li><strong>Môi trường:</strong> Tận dụng phế thải, giảm ô nhiễm.</li>
+<li><strong>Chi phí:</strong> Giá cạnh tranh, chuẩn công trình xanh.</li>
+<li><strong>Dịch vụ:</strong> Cung cấp giải pháp hạ tầng thoát nước đồng bộ, không chỉ bán gạch.</li>
+</ul>
+</div>
+<!-- Quan hệ & Kênh phân phối -->
+<div class="col-span-2 flex flex-col gap-4">
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/20 flex-1">
+<h4 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">support_agent</span>
+                                    Quan hệ KH
+                                </h4>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-2 list-disc pl-4">
+<li>Tư vấn kỹ thuật &amp; hỗ trợ thi công.</li>
+<li>Khảo sát, hỗ trợ sau thi công.</li>
+<li>Cung cấp hồ sơ kiểm định (xanh).</li>
+</ul>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/20 flex-1">
+<h4 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+                                    Kênh phân phối
+                                </h4>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-2 list-disc pl-4">
+<li>Phân phối trực tiếp dự án.</li>
+<li>Hệ thống đại lý VLXD.</li>
+<li>Digital marketing, Website.</li>
+<li>Triển lãm, mô hình thực tế.</li>
+</ul>
+</div>
+</div>
+<!-- Phân khúc khách hàng -->
+<div class="col-span-2 bg-surface-container-low p-5 rounded-xl border border-outline-variant/20">
+<h4 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">group</span>
+                                Phân khúc KH
+                            </h4>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-3">
+<li><strong class="text-primary">B2B:</strong> Chủ đầu tư, nhà thầu, khu công nghiệp, công trình xanh. (Trọng tâm)</li>
+<li><strong class="text-primary">B2G:</strong> Cơ quan quản lý hạ tầng, dự án chống ngập.</li>
+<li><strong class="text-primary">B2C:</strong> Hộ gia đình, quán cà phê, khu sinh thái.</li>
+</ul>
+</div>
+<!-- Bottom Row: Chi phí & Doanh thu -->
+<div class="col-span-5 bg-surface-container-low p-5 rounded-xl border border-outline-variant/20 mt-2">
+<h4 class="font-headline-md text-lg text-primary mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+                                Cấu trúc chi phí
+                            </h4>
+<p class="font-body-md text-sm text-on-surface-variant">
+                                Máy móc, nhà xưởng, kiểm định. Thu gom nguyên liệu và logistics. Nhân công. Marketing và bán hàng.
+                            </p>
+</div>
+<div class="col-span-5 bg-primary/5 p-5 rounded-xl border border-primary/20 mt-2">
+<h4 class="font-headline-md text-lg text-primary mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">payments</span>
+                                Dòng doanh thu
+                            </h4>
+<p class="font-body-md text-sm text-on-surface-variant">
+                                Bán gạch BioPave; Tư vấn thiết kế lớp nền; Hỗ trợ thi công và bảo trì. (Chuyển giao công nghệ trong tương lai).
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Section -->
+<section class="py-section-py bg-surface-container-low" id="impact">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Tác Động Bền Vững</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Đóng góp vào các Mục tiêu Phát triển Bền vững (SDGs) của Liên Hợp Quốc.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">location_city</span>
+</div>
+<h3 class="font-headline-md text-[22px] font-semibold text-primary mb-3">Hạ tầng xanh (SDG 9 &amp; 11)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cung cấp vật liệu giảm dòng chảy mặt, hỗ trợ thoát nước tại các đô thị.</p>
+</div>
+<div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">autorenew</span>
+</div>
+<h3 class="font-headline-md text-[22px] font-semibold text-primary mb-3">Kinh tế tuần hoàn (SDG 12)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tận dụng phế thải địa phương (vỏ hải sản, tro xỉ) thành sản phẩm có giá trị kinh tế cao.</p>
+</div>
+<div class="bg-surface p-8 rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">public</span>
+</div>
+<h3 class="font-headline-md text-[22px] font-semibold text-primary mb-3">Bảo vệ môi trường (SDG 13)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Giảm rác thải công nghiệp và thích ứng biến đổi khí hậu thông qua giảm hiệu ứng đảo nhiệt.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-py bg-background" id="about">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Sứ Mệnh</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                            Tiên phong thúc đẩy kinh tế tuần hoàn bằng cách chuyển hóa phế thải vỏ hải sản và tro xỉ nhiệt điện thành vật liệu xây dựng sinh thái có giá trị kinh tế. BioPave hướng đến cung cấp giải pháp hạ tầng xanh giúp giảm ngập đô thị, bảo vệ môi trường và nâng cao chất lượng sống cộng đồng.
+                        </p>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Tầm Nhìn</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                            Trở thành đơn vị tiên phong tại Đồng bằng sông Cửu Long trong lĩnh vực vật liệu xây dựng sinh thái và giải pháp thoát nước bền vững. Trong dài hạn, mở rộng quy mô và trở thành đối tác cung cấp vật liệu tái chế cho các công trình xanh trên toàn quốc.
+                        </p>
+</div>
+</div>
+<div class="text-center mb-12">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Đội Ngũ Của Chúng Tôi</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container-low p-6 rounded-2xl shadow-sm text-center border border-outline-variant/20">
+<div class="w-24 h-24 bg-primary-container/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">person</span>
+</div>
+<h4 class="font-label-md text-lg text-primary mb-1">Hồ Hình Mỹ Ý</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Phụ trách truyền thông &amp; Phát triển thị trường</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl shadow-sm text-center border border-outline-variant/20">
+<div class="w-24 h-24 bg-primary-container/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">person</span>
+</div>
+<h4 class="font-label-md text-lg text-primary mb-1">Trương Thị Trúc Ly</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Phụ trách quy trình xử lý &amp; Kiểm soát chất lượng</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl shadow-sm text-center border border-outline-variant/20">
+<div class="w-24 h-24 bg-primary-container/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">person</span>
+</div>
+<h4 class="font-label-md text-lg text-primary mb-1">Huỳnh Ngọc Phương Vy</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Nghiên cứu phát triển (R&amp;D)</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl shadow-sm text-center border border-outline-variant/20">
+<div class="w-24 h-24 bg-primary-container/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">school</span>
+</div>
+<h4 class="font-label-md text-lg text-primary mb-1">TS. Nguyễn Quốc Châu Thanh</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Cố vấn chuyên môn</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Roadmap Section -->
+<section class="py-section-py bg-surface-container" id="roadmap">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Lộ Trình Phát Triển</h2>
+</div>
+<div class="max-w-3xl mx-auto relative border-l-2 border-primary-fixed pl-8 ml-4 md:ml-auto md:mr-auto">
+<!-- Phase 1 -->
+<div class="mb-12 relative">
+<div class="absolute -left-[41px] top-1 w-6 h-6 rounded-full bg-primary border-4 border-surface-container"></div>
+<h3 class="font-headline-md text-xl text-primary mb-2">Năm 1: Thử nghiệm thị trường &amp; Uy tín</h3>
+<div class="font-body-md text-on-surface-variant bg-surface p-6 rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="mb-2">Thử nghiệm mô hình điểm tại các vùng ngập lụt ở <strong>Cần Thơ, Hậu Giang</strong>. Khách hàng trực tiếp trải nghiệm khả năng thấm nước.</p>
+<ul class="list-disc pl-5 text-sm space-y-1">
+<li>Hoàn thiện công thức, kiểm định độc lập (QUATEST).</li>
+<li>Triển khai mô hình lát thử nghiệm.</li>
+<li>Bán thử nghiệm có kiểm soát.</li>
+</ul>
+</div>
+</div>
+<!-- Phase 2 -->
+<div class="mb-12 relative">
+<div class="absolute -left-[41px] top-1 w-6 h-6 rounded-full bg-primary-fixed-dim border-4 border-surface-container"></div>
+<h3 class="font-headline-md text-xl text-primary mb-2">Năm 2: Đạt điểm hòa vốn</h3>
+<div class="font-body-md text-on-surface-variant bg-surface p-6 rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="mb-2">Đạt điểm hòa vốn và có lợi nhuận. Phủ sóng mạng lưới phân phối cho các khách hàng chiến lược B2B, B2G trên toàn <strong>Đồng bằng sông Cửu Long</strong>.</p>
+<ul class="list-disc pl-5 text-sm space-y-1">
+<li>Mở rộng quy mô sản xuất, tối ưu công suất.</li>
+<li>Tham gia các dự án quy mô lớn.</li>
+</ul>
+</div>
+</div>
+<!-- Phase 3 -->
+<div class="relative">
+<div class="absolute -left-[41px] top-1 w-6 h-6 rounded-full bg-secondary-fixed-dim border-4 border-surface-container"></div>
+<h3 class="font-headline-md text-xl text-primary mb-2">Năm 3: Mở rộng quy mô</h3>
+<div class="font-body-md text-on-surface-variant bg-surface p-6 rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="mb-2">Mở rộng quy mô sản xuất ra <strong>Duyên hải miền Trung, Đông Nam Bộ</strong> và xúc tiến nhượng quyền công nghệ.</p>
+<ul class="list-disc pl-5 text-sm space-y-1">
+<li>Khai thác tối đa công suất, đàm phán cước logistics.</li>
+<li>Phát triển các phiên bản sản phẩm mới.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-tertiary dark:bg-tertiary-container w-full py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<span class="font-headline-md text-headline-md font-bold text-on-tertiary dark:text-on-tertiary-container">BioPave</span>
+<p class="font-body-md text-body-md text-on-tertiary/80 text-sm">Giải pháp xanh cho hạ tầng đô thị bền vững.</p>
+</div>
+<div class="col-span-1 md:col-span-2 flex flex-wrap gap-x-8 gap-y-4 font-body-md text-body-md">
+<a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline transition-all opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline transition-all opacity-90 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline transition-all opacity-90 hover:opacity-100 transition-opacity" href="#">Sustainability Report</a>
+<a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline transition-all opacity-90 hover:opacity-100 transition-opacity" href="#">Press Kit</a>
+</div>
+<div class="col-span-1 flex items-end md:justify-end">
+<p class="font-body-md text-body-md text-on-tertiary/60 text-sm">© 2026 BioPave Sustainable Materials. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>
