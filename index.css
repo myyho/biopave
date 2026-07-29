@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    /* Thay nền trắng tinh bằng màu nền xám siêu nhạt để giao diện dịu mắt hơn */
+    background-color: #fcfcfc; 
+    
+    /* Tạo họa tiết lưới caro mờ ảo */
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px; /* Kích thước từng ô vuông lưới */
+    
+    /* Tạo hiệu ứng cuộn nền liên tục giống cơ chế marquee */
+    animation: moveGridBackground 15s linear infinite;
+  }
+  
+  /* Định nghĩa chu kỳ chuyển động của lưới */
+  @keyframes moveGridBackground {
+    0% {
+      background-position: 0px 0px;
+    }
+    100% {
+      /* Trượt chéo một khoảng bằng đúng kích thước ô lưới (40px) để tạo vòng lặp vô tận mượt mà */
+      background-position: 40px 40px;
+    }
+  }
+
+/* Trạng thái ban đầu (và khi lướt đi): Ẩn và dịch xuống dưới */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    /* Lướt đi thì ẩn nhanh (0.4s) và KHÔNG CẦN CHỜ delay */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out; 
+  }
+  
+  /* Trạng thái khi hiển thị (lướt đến) */
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* Chỉ áp dụng độ trễ (--delay) khi hiện ra để tạo hiệu ứng thác nước */
+    transition: opacity 0.6s ease-out var(--delay, 0s), transform 0.6s ease-out var(--delay, 0s);
+  }
+
+  /* Trạng thái ban đầu (và khi lướt đi): Ẩn và dịch xuống dưới */
+.ffade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    /* Lướt đi thì ẩn nhanh (0.4s) và KHÔNG CẦN CHỜ delay */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out; 
+  }
+  
+  /* Trạng thái khi hiển thị (lướt đến) */
+  .ffade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* Chỉ áp dụng độ trễ (--delay) khi hiện ra để tạo hiệu ứng thác nước */
+    transition: opacity 0.6s ease-out var(--delay, 0s), transform 0.6s ease-out var(--delay, 0s);
+  }

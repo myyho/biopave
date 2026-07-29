@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="vi"><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Title sẽ được JS tự động thay đổi -->
+    <title>Liên hệ với BioPave</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "secondary-fixed-dim": "#e1c299",
+                            "secondary-container": "#fbdbb0",
+                            "surface-variant": "#e5e2e1",
+                            "on-tertiary": "#ffffff",
+                            "inverse-surface": "#313030",
+                            "on-error": "#ffffff",
+                            "surface": "#fcf9f8",
+                            "on-background": "#1c1b1b",
+                            "surface-container-low": "#f6f3f2",
+                            "surface-container": "#f0edec",
+                            "on-primary-container": "#8abda9",
+                            "inverse-on-surface": "#f3f0ef",
+                            "tertiary-container": "#434542",
+                            "on-secondary-container": "#765f3d",
+                            "outline": "#707974",
+                            "on-primary": "#ffffff",
+                            "on-surface": "#1c1b1b",
+                            "tertiary-fixed-dim": "#c6c7c2",
+                            "on-tertiary-fixed-variant": "#454744",
+                            "surface-container-highest": "#e5e2e1",
+                            "secondary-fixed": "#feddb3",
+                            "on-secondary-fixed-variant": "#584324",
+                            "primary-fixed-dim": "#9ed1bd",
+                            "tertiary-fixed": "#e3e3de",
+                            "surface-bright": "#fcf9f8",
+                            "primary-container": "#1b4d3e",
+                            "secondary": "#725a39",
+                            "outline-variant": "#c0c9c3",
+                            "on-secondary": "#ffffff",
+                            "inverse-primary": "#9ed1bd",
+                            "surface-container-high": "#ebe7e7",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-dim": "#dcd9d9",
+                            "primary-fixed": "#baeed9",
+                            "on-surface-variant": "#404945",
+                            "surface-tint": "#376757",
+                            "primary": "#003629",
+                            "on-secondary-fixed": "#281801",
+                            "on-primary-fixed-variant": "#1d4f40",
+                            "on-tertiary-fixed": "#1a1c19",
+                            "background": "#fcf9f8",
+                            "on-error-container": "#93000a",
+                            "on-primary-fixed": "#002117",
+                            "error": "#ba1a1a",
+                            "tertiary": "#2d2f2c",
+                            "error-container": "#ffdad6",
+                            "on-tertiary-container": "#b2b2ae"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                        },
+                        "spacing": {
+                            "unit": "8px",
+                            "gutter": "24px",
+                            "container-max": "1280px",
+                            "margin-mobile": "16px",
+                            "margin-desktop": "40px"
+                        },
+                        "fontFamily": {
+                            "headline-xl-mobile": ["Be Vietnam Pro"],
+                            "headline-lg": ["Be Vietnam Pro"],
+                            "body-lg": ["Be Vietnam Pro"],
+                            "label-md": ["Be Vietnam Pro"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "headline-md": ["Be Vietnam Pro"],
+                            "headline-xl": ["Be Vietnam Pro"]
+                        },
+                        "fontSize": {
+                            "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                            "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                        }
+                    }
+                }
+            }
+        </script>
+    <style>
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+            .input-grounded {
+                background-color: theme('colors.surface-container-lowest');
+                border-bottom: 2px solid theme('colors.outline-variant');
+                transition: all 0.3s ease;
+            }
+            .input-grounded:focus {
+                border-bottom-color: theme('colors.primary');
+                box-shadow: 0 4px 6px -1px rgba(27, 77, 62, 0.08);
+                outline: none;
+            }
+            .card-depth-2 {
+                background-color: theme('colors.surface-container-lowest');
+                border: 1px solid rgba(192, 201, 195, 0.2);
+            }
+    
+            /* --- CƠ CHẾ ĐỔI NGÔN NGỮ BẰNG CSS --- */
+            html[lang="vi"] .lang-en { display: none !important; }
+            html[lang="en"] .lang-vi { display: none !important; }
+        </style>
+    </head>
+    <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary selection:text-on-primary antialiased">
+    <nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
+    <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim" href="#">BioPave</a>
+    
+    <div class="hidden md:flex items-center bg-surface-container-low/50 border border-outline-variant/30 rounded-full p-1 mr-4">
+        <!-- Nút chuyển ngôn ngữ -->
+        <button id="btn-vn" onclick="switchLanguage('VN')" class="px-3 py-1 rounded-full text-label-md font-label-md bg-primary text-on-primary transition-all">VN</button>
+        <span class="text-outline/30 mx-1">|</span>
+        <button id="btn-en" onclick="switchLanguage('EN')" class="px-3 py-1 rounded-full text-label-md font-label-md text-on-surface-variant hover:text-primary transition-all">EN</button>
+    </div><a href="index.html" class="hidden md:inline-flex items-center justify-center font-label-md text-label-md bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-full hover:brightness-110 transition-all shadow-md shadow-primary-container/20 border-b-2 border-primary pb-1" href="#">
+        <span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span>
+    </a>
+    <button class="md:hidden text-primary p-2 rounded-lg hover:bg-primary-container/10 transition-colors">
+    <span class="material-symbols-outlined">menu</span>
+    </button>
+    </div>
+    </nav>
+    <main class="flex-grow pt-32 pb-24">
+    <header class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-16 text-center md:text-left">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-container/10 border border-primary-container/20 mb-6">
+    <span class="material-symbols-outlined text-[18px] text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">eco</span>
+    <span class="font-label-md text-label-md text-primary tracking-wider uppercase">
+        <span class="lang-vi">Bắt Đầu Cùng Nhau</span><span class="lang-en">Let's Build Together</span>
+    </span>
+    </div>
+    <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6">
+        <span class="lang-vi">Liên hệ với BioPave</span><span class="lang-en">Contact BioPave</span>
+    </h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+        <span class="lang-vi">Cùng chúng tôi kiến tạo những giải pháp đô thị bền vững, mang tính thẩm mỹ cao và thân thiện với môi trường sinh thái. Chúng tôi luôn sẵn sàng lắng nghe ý tưởng hợp tác từ bạn.</span>
+        <span class="lang-en">Join us in creating sustainable, highly aesthetic, and eco-friendly urban solutions. We are always ready to hear your collaboration ideas.</span>
+    </p>
+    </header>
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+    <div class="lg:col-span-7 card-depth-2 rounded-2xl p-6 md:p-10 relative overflow-hidden group hover:shadow-[0_8px_30px_rgb(27,77,62,0.08)] transition-shadow duration-500">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed-dim/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+    <h2 class="font-headline-md text-headline-md text-primary mb-8">
+        <span class="lang-vi">Gửi thông điệp cho chúng tôi</span><span class="lang-en">Send us a message</span>
+    </h2>
+    <!-- Script và Iframe ẩn để xử lý gửi form mà không bị chuyển trang -->
+    <script>var submitted = false;</script>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showAlert(); document.getElementById('contactForm').reset(); }"></iframe>
+
+    <!-- Form chính -->
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSe7FzORs6Bz-DbYitzKOi7156biXryfKxodG_99w79rBqqgvA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="space-y-6 relative z-10" id="contactForm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+                <label class="font-label-md text-label-md text-on-surface-variant block" for="name">
+                    <span class="lang-vi">Họ và tên</span><span class="lang-en">Full Name</span>
+                </label>
+                <!-- Input: Họ và tên -->
+                <input name="entry.1367045153" class="input-grounded w-full px-4 py-3 rounded-t-lg font-body-md text-body-md text-on-surface placeholder:text-outline/50" id="name" data-pl-vi="Nguyễn Văn A" data-pl-en="John Doe" placeholder="Nguyễn Văn A" required="" type="text">
+            </div>
+            
+            <div class="space-y-2">
+                <label class="font-label-md text-label-md text-on-surface-variant block" for="phone">
+                    <span class="lang-vi">Số điện thoại</span><span class="lang-en">Phone Number</span>
+                </label>
+                <!-- Input: Số điện thoại (Sử dụng mã entry.2079241544) -->
+                <input name="entry.170256408" class="input-grounded w-full px-4 py-3 rounded-t-lg font-body-md text-body-md text-on-surface placeholder:text-outline/50" id="phone" data-pl-vi="090 123 4567" data-pl-en="+84 90 123 4567" placeholder="090 123 4567" type="tel">
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <label class="font-label-md text-label-md text-on-surface-variant block" for="email">Email</label>
+            <!-- Input: Email -->
+            <input name="entry.601749636" class="input-grounded w-full px-4 py-3 rounded-t-lg font-body-md text-body-md text-on-surface placeholder:text-outline/50" id="email" data-pl-vi="email@example.com" data-pl-en="email@example.com" placeholder="email@example.com" required="" type="email">
+        </div>
+
+        <div class="space-y-2">
+            <label class="font-label-md text-label-md text-on-surface-variant block" for="message">
+                <span class="lang-vi">Lời nhắn</span><span class="lang-en">Message</span>
+            </label>
+            <!-- Input: Lời nhắn -->
+            <textarea name="entry.2079241544" class="input-grounded w-full px-4 py-3 rounded-t-lg font-body-md text-body-md text-on-surface placeholder:text-outline/50 resize-y" id="message" data-pl-vi="Chia sẻ dự án hoặc ý tưởng hợp tác của bạn..." data-pl-en="Share your project or collaboration ideas..." placeholder="Chia sẻ dự án hoặc ý tưởng hợp tác của bạn..." required="" rows="4"></textarea>
+        </div>
+
+        <!-- Nút Submit (đã đổi type="submit" và xóa onclick) -->
+        <button class="inline-flex items-center justify-center gap-2 font-label-md text-label-md bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-lg hover:brightness-110 transition-all shadow-md shadow-primary-container/20 w-full md:w-auto mt-4 group" type="submit">
+            <span class="lang-vi">Gửi Yêu Cầu</span><span class="lang-en">Send Request</span>
+            <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </button>
+    </form>
+    </div>
+    <div class="lg:col-span-5 space-y-6">
+    <div class="card-depth-2 rounded-2xl p-6 md:p-8 flex items-start gap-4 hover:-translate-y-1 transition-transform duration-300">
+    <div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0">
+    <span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">location_on</span>
+    </div>
+    <div>
+    <h3 class="font-label-md text-label-md text-outline mb-1 uppercase tracking-wider">
+        <span class="lang-vi">Trụ Sở Chính</span><span class="lang-en">Headquarters</span>
+    </h3>
+    <p class="font-body-lg text-body-lg text-on-surface font-medium">
+        <span class="lang-vi">Đại học Cần Thơ</span><span class="lang-en">Can Tho University</span>
+    </p>
+    <p class="font-body-md text-body-md text-on-surface-variant mt-1">
+        <span class="lang-vi">Thành phố Cần Thơ, Việt Nam</span><span class="lang-en">Can Tho City, Vietnam</span>
+    </p>
+    </div>
+    </div>
+    <div class="card-depth-2 rounded-2xl p-6 md:p-8 flex items-start gap-4 hover:-translate-y-1 transition-transform duration-300">
+    <div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center shrink-0">
+    <span class="material-symbols-outlined text-secondary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mail</span>
+    </div>
+    <div>
+    <h3 class="font-label-md text-label-md text-outline mb-1 uppercase tracking-wider">
+        <span class="lang-vi">Email Liên Hệ</span><span class="lang-en">Contact Email</span>
+    </h3>
+    <a class="font-body-lg text-body-lg text-primary font-medium hover:underline decoration-2 underline-offset-4" href="mailto:myyhohinh@gmail.com">myyhohinh@gmail.com</a>
+    </div>
+    </div>
+    <div class="card-depth-2 rounded-2xl p-6 md:p-8">
+    <div class="flex items-center gap-3 mb-6">
+    <span class="material-symbols-outlined text-primary">groups</span>
+    <h3 class="font-headline-md text-headline-md text-primary">
+        <span class="lang-vi">Đội Ngũ Cốt Lõi</span><span class="lang-en">Core Team</span>
+    </h3>
+    </div>
+    <div class="space-y-5">
+    <div class="flex flex-col border-l-2 border-primary-fixed pl-4 py-1">
+    <span class="font-body-lg text-body-lg text-on-surface font-medium"><span class="lang-vi">Hồ Hình Mỹ Ý</span><span class="lang-en">Ho Hinh My Y</span></span>
+    <span class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5 mt-0.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+        <span class="lang-vi">Trưởng nhóm - Phụ trách truyền thông</span><span class="lang-en">Team Leader - Communications Lead</span>
+    </span>
+    </div>
+    <div class="flex flex-col border-l-2 border-primary-fixed pl-4 py-1">
+    <span class="font-body-lg text-body-lg text-on-surface font-medium"><span class="lang-vi">TS. Nguyễn Quốc Châu Thanh</span><span class="lang-en">Dr. Nguyen Quoc Chau Thanh</span></span>
+    <span class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5 mt-0.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+        <span class="lang-vi">Cố vấn chuyên môn</span><span class="lang-en">Technical Advisor</span>
+    </span>
+    </div>
+    </div>
+    </div>
+    <div class="rounded-2xl overflow-hidden card-depth-2 h-64 relative group">
+    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0 contrast-125 brightness-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTZP_Xj1nw5-PyX2Ky86WF2XDveKg7WL4IYgAOG47B9rKfxGTKOm1M_s7Y71aT8sJUNP6-qwuw2GnYyT_zhI9af9tZRxt-v4P4DrxdNkYyJvzo60ALkQRgfFGySHYo5Ryml4vxDkfGJmODoOOhx3bDHIL7EQu1sPLsuc9k-O-Xowel3sZxUuNvaIQ30aLyWsRBMTgT67TwB6AuOCYwvRzc2KBIG6Ulje8hT6vkL36eYdzJh3s4efFMuw">
+    <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+    <span class="font-label-md text-label-md text-primary bg-surface/90 backdrop-blur px-3 py-1.5 rounded-md shadow-sm">
+        <span class="lang-vi">Khu vực dự án tập trung</span><span class="lang-en">Focused Project Area</span>
+    </span>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop mt-32">
+    <div class="text-center mb-12">
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-4">
+        <span class="lang-vi">Câu Hỏi Thường Gặp</span><span class="lang-en">Frequently Asked Questions</span>
+    </h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">
+        <span class="lang-vi">Những thông tin cơ bản về vật liệu BioPave và quy trình đặt hàng.</span>
+        <span class="lang-en">Basic information about BioPave materials and the ordering process.</span>
+    </p>
+    </div>
+    <div class="space-y-4">
+    <details class="group bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+    <summary class="flex items-center justify-between cursor-pointer p-6 font-body-lg text-body-lg text-on-surface font-medium hover:bg-surface-container-low/50 transition-colors">
+        <span class="lang-vi">BioPave có thể tùy chỉnh kích thước theo dự án không?</span>
+        <span class="lang-en">Can BioPave be customized in size for specific projects?</span>
+        <span class="material-symbols-outlined transition-transform duration-300 group-open:-rotate-180 text-outline">expand_more</span>
+    </summary>
+    <div class="px-6 pb-6 text-on-surface-variant font-body-md text-body-md leading-relaxed border-t border-outline-variant/20 pt-4">
+        <span class="lang-vi">Có, vật liệu lát nền thấm nước sinh thái của chúng tôi có thể được đúc và điều chỉnh kích thước, độ dày tùy thuộc vào tải trọng yêu cầu của từng khu vực dự án (đường đi bộ, quảng trường, bãi đỗ xe nhẹ).</span>
+        <span class="lang-en">Yes, our ecological permeable paving materials can be molded and adjusted in size and thickness depending on the required load capacity of each project area (pedestrian walkways, squares, light parking lots).</span>
+    </div>
+    </details>
+    <details class="group bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+    <summary class="flex items-center justify-between cursor-pointer p-6 font-body-lg text-body-lg text-on-surface font-medium hover:bg-surface-container-low/50 transition-colors">
+        <span class="lang-vi">Quy trình đặt hàng và đánh giá mặt bằng diễn ra như thế nào?</span>
+        <span class="lang-en">How does the ordering and site assessment process work?</span>
+        <span class="material-symbols-outlined transition-transform duration-300 group-open:-rotate-180 text-outline">expand_more</span>
+    </summary>
+    <div class="px-6 pb-6 text-on-surface-variant font-body-md text-body-md leading-relaxed border-t border-outline-variant/20 pt-4">
+        <span class="lang-vi">Sau khi nhận yêu cầu, đội ngũ chuyên gia của chúng tôi sẽ tiến hành khảo sát thực địa để đánh giá cấu trúc đất, lưu lượng nước tự nhiên và yêu cầu tải trọng. Dựa trên dữ liệu thu thập, chúng tôi sẽ đề xuất giải pháp thi công lớp nền và khối lượng BioPave phù hợp nhất.</span>
+        <span class="lang-en">Upon receiving a request, our team of experts will conduct a field survey to assess soil structure, natural water flow, and load requirements. Based on the collected data, we will propose the most suitable base construction solution and BioPave volume.</span>
+    </div>
+    </details>
+    </div>
+    </section>
+    </main>
+    <footer class="w-full py-12 bg-tertiary dark:bg-tertiary-container text-on-tertiary dark:text-on-tertiary-container font-body-md text-body-md">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <div class="col-span-1 md:col-span-1 flex flex-col items-start gap-4">
+    <span class="font-headline-md text-headline-md font-bold text-on-tertiary dark:text-on-tertiary-container">BioPave</span>
+    <p class="text-on-tertiary/80 text-sm mt-2">© 2026 BioPave Sustainable Materials. All rights reserved.</p>
+    </div>
+    <div class="col-span-1 md:col-span-3 flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
+    <a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline opacity-90 hover:opacity-100 py-2" href="#">Privacy Policy</a>
+    <a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline opacity-90 hover:opacity-100 py-2" href="#">Terms of Service</a>
+    <a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline opacity-90 hover:opacity-100 py-2" href="#">Sustainability Report</a>
+    <a class="text-on-tertiary/80 hover:text-primary-fixed transition-colors hover:underline opacity-90 hover:opacity-100 py-2" href="#">Press Kit</a>
+    </div>
+    </div>
+    </footer>
+    
+    <script>
+        function switchLanguage(lang) {
+            // 1. Đổi thuộc tính lang của thẻ HTML
+            if (lang === 'VN') {
+                document.documentElement.lang = 'vi';
+                document.title = "Liên hệ với BioPave";
+            } else {
+                document.documentElement.lang = 'en';
+                document.title = "Contact BioPave";
+            }
+    
+            // 2. Cập nhật Placeholder cho form
+            document.querySelectorAll('input[data-pl-vi], textarea[data-pl-vi]').forEach(el => {
+                el.placeholder = el.getAttribute(lang === 'VN' ? 'data-pl-vi' : 'data-pl-en');
+            });
+    
+            // 3. Xử lý đổi màu hiệu ứng nút bấm (Navbar Contact form)
+            const btnVN = document.getElementById('btn-vn');
+            const btnEN = document.getElementById('btn-en');
+            
+            const activeClasses = ['bg-primary', 'text-on-primary'];
+            const inactiveClasses = ['text-on-surface-variant', 'hover:text-primary'];
+    
+            if (lang === 'VN') {
+                btnVN.classList.remove(...inactiveClasses);
+                btnVN.classList.add(...activeClasses);
+                
+                btnEN.classList.remove(...activeClasses);
+                btnEN.classList.add(...inactiveClasses);
+            } else {
+                btnEN.classList.remove(...inactiveClasses);
+                btnEN.classList.add(...activeClasses);
+                
+                btnVN.classList.remove(...activeClasses);
+                btnVN.classList.add(...inactiveClasses);
+            }
+        }
+    
+        // 4. Đổi ngôn ngữ cho hộp thoại thông báo Alert
+        function showAlert() {
+            const currentLang = document.documentElement.lang;
+            if (currentLang === 'vi') {
+                alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.');
+            } else {
+                alert('Thank you for reaching out! We will get back to you as soon as possible.');
+            }
+        }
+    </script>
+    </body></html>
