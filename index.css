@@ -37,7 +37,7 @@ body {
     opacity: 1;
     transform: translateY(0);
     /* Chỉ áp dụng độ trễ (--delay) khi hiện ra để tạo hiệu ứng thác nước */
-    transition: opacity 0.6s ease-out var(--delay, 0s), transform 0.6s ease-out var(--delay, 0s);
+    transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out var(--delay, 0s);
   }
 
   /* Trạng thái ban đầu (và khi lướt đi): Ẩn và dịch xuống dưới */
@@ -53,5 +53,5 @@ body {
     opacity: 1;
     transform: translateY(0);
     /* Chỉ áp dụng độ trễ (--delay) khi hiện ra để tạo hiệu ứng thác nước */
-    transition: opacity 0.6s ease-out var(--delay, 0s), transform 0.6s ease-out var(--delay, 0s);
+    transition: opacity 0.6s ease-out 0.3s , transform 0.6s ease-out var(--delay, 0s);
   }
